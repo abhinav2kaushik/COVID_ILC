@@ -23,6 +23,8 @@ Place the zip in the main `COVID_ILC` folder and extract it:
 unzip Result_replication.zip
 ```
 ```
+Place `Result_replication.zip` in the main `COVID_ILC` repository directory and extract it from the command line using `unzip Result_replication.zip`. Avoid extracting it through the graphical interface, which may create an additional enclosing folder and disrupt the file paths used by the R scripts. The `DataFiles/` and `PyScenic_output/` folders must be located directly inside the main repository directory.
+
 Result_replication.zip
   |- DataFiles/
   |- PyScenic_output/
