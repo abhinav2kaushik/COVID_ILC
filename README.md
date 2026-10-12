@@ -23,9 +23,9 @@ Place the zip in the main `COVID_ILC` folder and extract it:
 unzip Result_replication.zip
 ```
 ```
-`Result_replication.zip
+Result_replication.zip
   |- DataFiles/
-  |- PyScenic_output/`
+  |- PyScenic_output/
 ```
 
 
