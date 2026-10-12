@@ -5,14 +5,10 @@ library(ggplot2)
 library(gridExtra)
 library(igraph)
 library(circlize)
-setwd("~/Library/CloudStorage/OneDrive-HarvardUniversity/ILC/Analysis/Result_replication")
-.libPaths(c(
-  "./src/",
-  .libPaths()
-))
 library(scLink)
 library(MAST)
 
+setwd("./")
 
 fig3_dir <- "Figure_3"
 dir.create(fig3_dir, showWarnings = FALSE, recursive = TRUE)
