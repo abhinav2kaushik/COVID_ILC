@@ -17,17 +17,18 @@ cd COVID_ILC
 
 ### 2. Download and extract the processed data
 
-Download these two archives from **DOI: XXXXXXXXX**:
-
-- `DataFiles.zip`
-- `PyScenic_output.zip`
-
-Place both archives in the main `COVID_ILC` folder and extract them:
-
+Download these two folders from **DOI: XXXXXXXXX** as zip file Result_replication.zip:
+Place the zip in the main `COVID_ILC` folder and extract it:
 ```bash
-unzip DataFiles.zip
-unzip PyScenic_output.zip
+unzip Result_replication.zip
 ```
+```
+`Result_replication.zip
+  |- DataFiles/
+  |- PyScenic_output/`
+```
+
+
 
 Ensure that the resulting `DataFiles/` and `PyScenic_output/` directories are located directly inside the main `COVID_ILC` folder.
 
