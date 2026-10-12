@@ -5,13 +5,10 @@ library(gridExtra)
 library(pheatmap)
 library(circlize)
 library(dplyr)
-setwd("~/Library/CloudStorage/OneDrive-HarvardUniversity/ILC/Analysis/Result_replication")
-.libPaths(c(
-  "./src/",
-  .libPaths()
-))
 library(MAST)
+library(scLink)
 
+setwd("./")
 
 fig4_dir <- "Figure_4"
 scenic_dir <- "PyScenic_output/"
