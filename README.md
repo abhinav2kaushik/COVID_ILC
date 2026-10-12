@@ -58,4 +58,4 @@ Kaushik A, Chang I, Han X, He Z, Komlosi ZI, Ji X, Cao S, Akdis CA, Boyd S, Pule
 ## Contact
 
 **Abhinav Kaushik**  
-[akaushik@hsph.harvard.edu](mailto: akaushik[AT]hsph[DOT]harvard[DOT]edu)
+(mailto: akaushik[AT]hsph[DOT]harvard[DOT]edu)
