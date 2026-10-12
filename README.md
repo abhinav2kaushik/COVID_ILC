@@ -31,6 +31,10 @@ unzip PyScenic_output.zip
 
 Ensure that the resulting `DataFiles/` and `PyScenic_output/` directories are located directly inside the main `COVID_ILC` folder.
 
+## Expected Output
+
+Running the scripts will create output folders for the corresponding main figures (e.g., `Figure_1/`). Each folder will contain the generated plots and associated p-values, where applicable, as reported in the study.
+
 ### 3. Install the required packages
 
 Before running the scripts, install all packages listed in the supplied session information (`sessionInfo`). Use the recorded package versions to match the original analysis environment as closely as possible.
