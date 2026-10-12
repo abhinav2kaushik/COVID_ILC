@@ -15,6 +15,14 @@ st = "./DataFiles/processed_data/count_and_tag_files/"
 fp = "./DataFiles/processed_data/handgatedILCs/"
 fileinfo = "./DataFiles/processed_data/FileInfo.csv"
 
+healthy <- c("1033", "1348", "1804", "1987", "2195", "55689-0068", "55689-0071",
+             "55689-0080", "WF001", "WF002", "WF006", "WF008", "WF010", "WF015",
+             "WF016", "WF018", "WF019", "WF021", "WF025", "WF045", "WF026",
+             "WF031", "WF033", "WF035", "WF042")
+long_ter_covd <- c("55689-0007", "55689-0012", "55689-0015", "55689-0029",
+                   "55689-0031", "55689-0034", "55689-0044", "55689-0050",
+                   "55689-0057", "55689-0095", "55689-0165", "55689-0219",
+                   "55689-0220", "OHC-001", "OHC-010", "OHC001", "OHC010")
 
 ##### LOAD FILES ######
 
