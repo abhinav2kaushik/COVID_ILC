@@ -10,7 +10,7 @@ library(grid)
 library(MASS)
 library(png)
 
-setwd("~/Library/CloudStorage/OneDrive-HarvardUniversity/ILC/Analysis/Result_replication")
+setwd("./")
 
 ################################
 ########## Figure 1B ###########
