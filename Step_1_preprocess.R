@@ -4,7 +4,7 @@
 library(Seurat)
 library(Matrix)
 
-setwd("~/Library/CloudStorage/OneDrive-HarvardUniversity/ILC/Analysis/Result_replication")
+setwd("./")
 
 ########  File paths ##########
 
