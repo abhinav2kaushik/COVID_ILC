@@ -45,7 +45,7 @@ Set the main `COVID_ILC` folder as your working directory and run the scripts co
 
 ### Optional: Running pySCENIC
 
-Running pySCENIC is optional because the essential input files and precomputed output files are already provided in `PyScenic_output.zip`. These outputs can be used directly for the downstream analyses and figure generation.
+Running pySCENIC (https://pyscenic.readthedocs.io/en/latest/) is optional because the essential input files and precomputed output files are already provided in `PyScenic_output.zip`. These outputs can be used directly for the downstream analyses and figure generation. Please refer pySCENIC.py for script we used to generate PyScenic output. 
 
 The Python script used to generate the pySCENIC outputs is also included for reference and for users who wish to rerun this step.
 
