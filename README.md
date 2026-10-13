@@ -17,7 +17,7 @@ cd COVID_ILC
 
 ### 2. Download and extract the processed data
 
-Download these two folders from **DOI: XXXXXXXXX** as zip file Result_replication.zip:
+Download these two folders from **DOI: https://doi.org/10.7910/DVN/G66L4X ** as zip file Result_replication.zip:
 Place the zip in the main `COVID_ILC` folder and extract it:
 ```bash
 unzip Result_replication.zip
