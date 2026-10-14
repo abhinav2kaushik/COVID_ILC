@@ -146,7 +146,7 @@ totalILCs  = sum(table(covid_ilc@meta.data$handgated_cell_type2))
 #lets count ILC1 
 sum(covid_ilc@meta.data$handgated_cell_type2=="ILC1", na.rm = T)
 #[1] 2103
-#lets count ILC3
+#lets count ILC2
 sum(covid_ilc@meta.data$handgated_cell_type2=="ILC2", na.rm = T)
 #[1] 2509
 #lets count ILCp 
