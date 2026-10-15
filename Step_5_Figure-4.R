@@ -248,7 +248,7 @@ for (clus in unique(ggdf$ILCn)) {
       theme_bw(base_size = 14) +
       scale_fill_manual(values = clrs) +
       scale_shape_manual(values = c(24, 21)) +
-      labs(title = paste(gene, sep = ": "), y = "% cells expressing") +
+      labs(title = paste(gene, sep = ": "), y = "% gene+ cells") +
       theme(
         legend.position = "none",
         plot.title = element_text(size = 10, face = "italic", hjust = 0.5),
