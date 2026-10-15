@@ -195,59 +195,78 @@ for (clus in c("ILC1","ILC2","ILCp")){
 ggdf$longterm  = ifelse(ggdf$PPID %in% long_ter_covd, "Long","Other")
 ggdf$COVID_status = factor(ggdf$COVID_status, levels = c("healthy","COVID"))
 
-clrs = c("#008000","#F0B548")
+
+clrs = c("#008000", "#F0B548")
 plots = list()
-for (clus in c("ILC1","ILC2","ILCp")){
+
+
+for (clus in unique(ggdf$ILCn)) {
   ggdf0 = dplyr::filter(ggdf, ILCn == clus)
   
-  textdf0 = ggdf0[,c("value","Gene")] %>% dplyr::group_by(Gene) %>% dplyr::summarise_all(max)
-  textdf0$max = textdf0$value
+  textdf0 = ggdf0 %>%
+    dplyr::group_by(Gene) %>%
+    dplyr::summarise(value = max(value), .groups = "drop")
+  
   textdf0$x = 1.5
-  textdf0$Y = textdf0$max + (0.05 * textdf0$max)
+  textdf0$Y = textdf0$value * 1.05
   
   da1 = DEgenes[[clus]]
   da1$genes = rownames(da1)
-  da1 = dplyr::filter(da1, genes %in% textdf0$Gene)
-  rownames(da1) = da1$genes
-  da1 = da1[textdf0$Gene,]
+  da1 = da1[match(textdf0$Gene, da1$genes), ]
   
   keygenes = dplyr::filter(da1, p_val_adj < 0.05)$genes
-  allgenes =  c("LEF1","RUNX3","STAT3","STAT6","IKZF1","GATA3","JUNB")
-  com = intersect(keygenes,allgenes)
-  other = setdiff(allgenes,keygenes)
+  allgenes = c("LEF1", "RUNX3", "STAT3", "STAT6", "IKZF1", "GATA3", "JUNB")
+  other = setdiff(allgenes, keygenes)
   
-  if (length(keygenes) < 7){
-    diff = 7 - length(keygenes)
-    keygenes = c(keygenes, other[1:diff])
+  if (length(keygenes) < 7) {
+    keygenes = c(keygenes, head(other, 7 - length(keygenes)))
   }
   
-  label = paste("q =", format(da1$p_val_adj, scientific =T, digits=2))
-  textdf0$label=label
+  textdf0$label = paste(
+    "q =", format(da1$p_val_adj, scientific = TRUE, digits = 2)
+  )
   
-  ggdf0$Gene = factor(ggdf0$Gene, levels = targetGnes[[clus]] )
-  textdf0$Gene = factor(textdf0$Gene, levels = targetGnes[[clus]])
+  # Preserve the original gene order.
+  genes_to_plot = targetGnes[[clus]][
+    targetGnes[[clus]] %in% keygenes &
+      targetGnes[[clus]] %in% ggdf0$Gene
+  ]
   
-  ggdf0 = dplyr::filter(ggdf0, Gene %in% keygenes)
-  textdf0 = dplyr::filter(textdf0, Gene %in% keygenes)
-  
-  g2 <- ggplot(ggdf0, aes(y=value, x=COVID_status)) +
-    geom_boxplot(width = 0.5, alpha = 0.4,outlier.color = NA) +
-    geom_point(aes(fill=COVID_status,shape = longterm), color = "black", alpha = 0.7, position = position_dodge(width = 0.01), size=2.6) + 
-    theme_bw(base_size = 14) + 
-    facet_wrap(~Gene, scales = "free", nrow = 1) +
-    scale_fill_manual(values = clrs) +
-    scale_shape_manual(values = c(24,21)) +
-    theme(legend.position = "none",
-          strip.background = element_rect(fill = "white"),
-          strip.text = element_text(size=10, face = "italic"),
-          axis.text.x = element_blank(),
-          axis.title.x = element_blank(),
-    ) + ylab(label = "% cells expression") +
-    geom_text(data=textdf0, mapping=aes(x=x, y=Y, label=label), size=3.1)
-  
-  plots[[clus]] = g2
+  for (gene in genes_to_plot) {
+    plot_data = dplyr::filter(ggdf0, Gene == gene)
+    label_data = dplyr::filter(textdf0, Gene == gene)
+    
+    g2 = ggplot(plot_data, aes(y = value, x = COVID_status)) +
+      geom_boxplot(width = 0.5, alpha = 0.4, outlier.color = NA) +
+      geom_point(
+        aes(fill = COVID_status, shape = longterm),
+        color = "black",
+        alpha = 0.7,
+        position = position_dodge(width = 0.01),
+        size = 2.6
+      ) +
+      theme_bw(base_size = 14) +
+      scale_fill_manual(values = clrs) +
+      scale_shape_manual(values = c(24, 21)) +
+      labs(title = paste(gene, sep = ": "), y = "% cells expressing") +
+      theme(
+        legend.position = "none",
+        plot.title = element_text(size = 10, face = "italic", hjust = 0.5),
+        axis.text.x = element_blank(),
+        axis.title.x = element_blank()
+      ) +
+      geom_text(
+        data = label_data,
+        aes(x = x, y = Y, label = label),
+        inherit.aes = FALSE,
+        size = 3.1
+      )
+    ind = length(plots) + 1L
+    plots[[ind]] = g2
+  }
 }
-
+pls = c(9, 17, 11, 12, 13, 14, 2, 3, 4, 5, 6,18, 19) ## shortlisted ones
+plots= plots[pls]
 
 fn = paste0(fig4_dir, "/Figure4B.png")
 
